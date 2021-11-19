@@ -58,24 +58,6 @@ export default function Home() {
               required
             />
           </div>
-          <div>
-            <label htmlFor="purpose">Purpose</label>
-            <select
-              name="purpose"
-              id="purpose"
-              value={purpose}
-              onChange={(e) => setPurpose(e.target.value)}
-            >
-              <option value="" disabled required>
-                Select one
-              </option>
-              <option value="Web Development">Web Development</option>
-              <option value="Feedback / Message">Mobile App Development</option>
-              <option value="App Development">Backend Development</option>
-              <option value="Query / Question">Query / Question</option>
-              <option value="Feedback / Message">Feedback / Message</option>
-            </select>
-          </div>
         </div>
         <div>
           <label htmlFor="message">Message</label>
