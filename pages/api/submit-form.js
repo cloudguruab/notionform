@@ -11,7 +11,7 @@ export default async function handler(req, res) {
       .json({ message: `${req.method} requests are not allowed` });
   }
   try {
-    const { name, email, purpose, message } = JSON.parse(req.body);
+    const { name, email, message } = JSON.parse(req.body);
     await notion.pages.create({
       parent: {
         database_id: process.env.NOTION_DATABASE_ID,
@@ -27,18 +27,19 @@ export default async function handler(req, res) {
           ],
         },
         Email: {
-          email: email,
-        },
-        Purpose: {
-          select: {
-            name: purpose,
-          },
+          rich_text: [
+            {
+              text: {
+                content: String(email),
+              },
+            },
+          ],
         },
         Message: {
           rich_text: [
             {
               text: {
-                content: message,
+                content: String(message),
               },
             },
           ],
